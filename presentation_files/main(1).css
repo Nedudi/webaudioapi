@@ -1,0 +1,84 @@
+  .impress-enabled .step{
+    opacity: 0;
+  }
+
+
+
+
+
+  body{
+        padding: 10px;
+        background-color: transparent;
+      }
+
+      .play,
+      .pause{
+        margin: 10px auto 0 auto;
+        width: 100%;
+      }
+
+      .play{display: none;}
+      .readytoplay .play{display: block;}
+      .pause{display: none;}
+      .playing .play{display: none;}
+      .playing .pause{display: block;}
+
+      .scheme{
+        width: 100%;
+        min-height: 80px;
+        min-width: 415px;
+        background-size: contain;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        margin: 10px 0;
+      }
+
+      .block,
+      .block-arrow{
+        display: inline-block;
+        vertical-align: top;
+        text-align: center;
+      }
+
+      .block{
+        border: 2px solid gray;
+        min-width:  100px;
+        min-height: 100px;
+        line-height: 100px;
+      }
+
+      .block-arrow{
+        border-bottom: 2px solid gray;
+        min-width:  50px;
+        min-height: 50px;
+      }
+
+
+      .legend ul{
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        margin-top: 10px;
+      }
+
+      .legend li{
+        padding: 0;
+        margin: 0;
+        height: 40px;
+        line-height: 40px;
+        border-top:    1px solid rgba(0,0,0,0.2);
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+        text-align: center;
+      }
+
+      .legend label,
+      .legend input{
+        display: inline-block;
+        height: 20px;
+        font-size: 14px;
+        margin-right: 10px;
+      }
+
+      input[type=range]{
+        width: 200px;
+      }
