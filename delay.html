@@ -67,11 +67,11 @@
         source.buffer = buffer;
         destination = context.destination;
 
-        gainNode       = context.createGain();
-        gainNode.gain.value  = $('.range1').val();
+        delayNode       = context.createDelayNode(10); // max possible delay in seconds
+        delayNode.delayTime.value  = $('.range1').val();
 
-        source.connect(gainNode);
-        gainNode.connect(destination);
+        source.connect(delayNode);
+        delayNode.connect(destination);
 
         source.start(0);
       }
@@ -98,26 +98,27 @@
       loadSoundFile('papa_roach_last_resort.mp3');
 
       $('.range1').on('change', function(e){
-        if(!gainNode) return;
-        gainNode.gain.value = $('.range1').val();
+        if(!delayNode) return;
+        //console.log($('.range1').val());
+        delayNode.delayTime.value = $('.range1').val();
       });
     });
 
   </script>
-  <h2>Gain node</h2>
+  <h2>Delay node</h2>
 <pre data-language="javascript">
-var gainNode = context.createGain();
-gainNode.gain.value = 0.4; // 0..1
+var delayNode = context.createDelayNode(10); // max possible delay in seconds
+delayNode.delayTime.value = $('.range1').val();
 
-source.connect(gainNode);
-gainNode.connect(destination);
+source.connect(delayNode);
+delayNode.connect(destination);
 </pre>
 
-  <div class="scheme" style="background-image:url(source-gain-destination.svg)"></div>
+  <div class="scheme" style="background-image:url(source-delay-destination.svg)"></div>
   <div class="legend">
     <!-- <h3>Gain</h3> -->
     <ul>
-      <li><label>Gain level</label><input class="range1" type="range" name="points" step="0.05" min="0.1" max="1" value="0.2"></li>
+      <li><label>Delay time</label><input class="range1" type="range" name="points" step="1" min="1" max="10" value="3"></li>
     </ul>
   </div>
 

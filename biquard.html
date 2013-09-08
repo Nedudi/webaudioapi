@@ -29,13 +29,13 @@
     // //     // create source
     // //     channel.source         = context.createMediaElementSource(source);
     // //     channel.destination    = context.destination;
-    // //     channel.gainNode       = context.createGainNode();
-    // //     channel.gainNode.gain = 0;
+    // //     channel.filterNode       = context.createfilterNode();
+    // //     channel.filterNode.gain = 0;
     // //     // channel.analyser       = context.createAnalyser();
     // //     // channel.analyser.fftSize = 2048;
     // //     // connect
-    // //     channel.source.connect(channel.gainNode);
-    // //     channel.gainNode.connect(channel.destination);
+    // //     channel.source.connect(channel.filterNode);
+    // //     channel.filterNode.connect(channel.destination);
     // //     return channel;
     // // }
 
@@ -67,11 +67,14 @@
         source.buffer = buffer;
         destination = context.destination;
 
-        gainNode       = context.createGain();
-        gainNode.gain.value  = $('.range1').val();
+        filterNode = context.createBiquadFilter();
+        filterNode.type = $('.radio1:checked').val()*1;
+        filterNode.frequency.value = $('.range1').val();
+        filterNode.Q.value = $('.range2').val();
+        filterNode.gain.value = $('.range3').val();
 
-        source.connect(gainNode);
-        gainNode.connect(destination);
+        source.connect(filterNode);
+        filterNode.connect(destination);
 
         source.start(0);
       }
@@ -97,27 +100,46 @@
 
       loadSoundFile('papa_roach_last_resort.mp3');
 
-      $('.range1').on('change', function(e){
-        if(!gainNode) return;
-        gainNode.gain.value = $('.range1').val();
+      $('.range1, .range2, .range3, .radio1').on('change', function(e){
+        if(!filterNode) return;
+        filterNode.type = $('.radio1:checked').val()*1;
+        filterNode.frequency.value = $('.range1').val();
+        filterNode.Q.value = $('.range2').val();
+        filterNode.gain.value = $('.range3').val();
       });
     });
 
   </script>
-  <h2>Gain node</h2>
+  <h2>Biquad filter node</h2>
 <pre data-language="javascript">
-var gainNode = context.createGain();
-gainNode.gain.value = 0.4; // 0..1
+var filterNode = context.createBiquadFilter();
+filterNode.type = 1; // High-pass filter.
+filterNode.frequency.value = 1000; // Cutoff to 1kHZ
+filterNode.frequency.Q = 1; // QUality factor
+filterNode.gain.value = 1000; // Not used in this filter type
 
-source.connect(gainNode);
-gainNode.connect(destination);
+source.connect(filterNode);
+filterNode.connect(destination);
 </pre>
 
-  <div class="scheme" style="background-image:url(source-gain-destination.svg)"></div>
+  <div class="scheme" style="background-image:url(source-biquard-destination.svg)"></div>
   <div class="legend">
     <!-- <h3>Gain</h3> -->
     <ul>
-      <li><label>Gain level</label><input class="range1" type="range" name="points" step="0.05" min="0.1" max="1" value="0.2"></li>
+      <li>
+              <input type="radio" name="types" checked  class="radio1" value="0"><label>Lowpass filter</label>
+      <!-- --><input type="radio" name="types"  class="radio1" value="1"><label>Highpass filter</label>
+      <!-- --><input type="radio" name="types"  class="radio1" value="2"><label>Bandpass filter</label>
+          <br><input type="radio" name="types"  class="radio1" value="3"><label>Lowshelf filter</label>
+      <!-- --><input type="radio" name="types" class="radio1" value="4"><label>Highshelf filter</label>
+      <!-- --><input type="radio" name="types"   class="radio1" value="5"><label>Peaking filter</label>
+      <!-- --><input type="radio" name="types"     class="radio1" value="6"><label>Notch filter</label>
+      <!-- --><input type="radio" name="types"  class="radio1" value="7"><label>All-pass filter</label></li>
+    </ul>
+    <ul>
+      <li><label>Frequency</label><input class="range1" type="range" name="points1" step="10" min="10" max="20000" value="350"></li>
+      <li><label>Quality factor</label><input class="range2" type="range" name="points2" step="0.001" min="0.001" max="100" value="1"></li>
+      <li><label>Gain</label><input class="range3" type="range" name="points3" step="1" min="-40" max="40" value="0"></li>
     </ul>
   </div>
 
