@@ -7,6 +7,18 @@
     background-color: transparent;
   }
 
+  h2{
+    color:rgb(0, 139, 224);
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+
+  h3{
+    color:rgb(103, 143, 0);;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
   .play,
   .pause{
     margin: 10px auto 0 auto;

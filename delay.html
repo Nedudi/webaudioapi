@@ -20,39 +20,6 @@
     </style>
   <script type="text/javascript">
 
-    // // // create context
-    // // var context  = new webkitAudioContext();
-
-
-    // // var createChannel = function(source){
-    // //     var channel = {};
-    // //     // create source
-    // //     channel.source         = context.createMediaElementSource(source);
-    // //     channel.destination    = context.destination;
-    // //     channel.gainNode       = context.createGainNode();
-    // //     channel.gainNode.gain = 0;
-    // //     // channel.analyser       = context.createAnalyser();
-    // //     // channel.analyser.fftSize = 2048;
-    // //     // connect
-    // //     channel.source.connect(channel.gainNode);
-    // //     channel.gainNode.connect(channel.destination);
-    // //     return channel;
-    // // }
-
-    // // var audioElement = new Audio();
-    // // audioElement.addEventListener("canplaythrough", function() {
-    // //   var channel = createChannel(audioElement);
-    //   $('.play').on('click', function(){
-    //     playSound()
-    //     $('body').addClass('playing');
-    //   });
-    //   $('.pause').on('click', function(){
-    //     stopSound()
-    //     $('body').removeClass('playing');
-    //   });
-    // // });
-    // // audioElement.src = 'papa_roach_last_resort.mp3';
-
     $(function(){
       var context = new window.AudioContext();
       var buffer,source,destination;
@@ -99,7 +66,6 @@
 
       $('.range1').on('change', function(e){
         if(!delayNode) return;
-        //console.log($('.range1').val());
         delayNode.delayTime.value = $('.range1').val();
       });
     });
@@ -118,7 +84,7 @@ delayNode.connect(destination);
   <div class="legend">
     <!-- <h3>Gain</h3> -->
     <ul>
-      <li><label>Delay time</label><input class="range1" type="range" name="points" step="1" min="1" max="10" value="3"></li>
+      <li><label>Delay time</label><input style="width:300px" class="range1" type="range" name="points" step="1" min="1" max="10" value="3"></li>
     </ul>
   </div>
 
