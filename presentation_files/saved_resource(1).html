@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<!-- saved from url=(0044)http://webaudioapi.com/samples/room-effects/ -->
+<!-- saved from url=(0042)http://webaudioapi.com/samples/visualizer/ -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
 <link href="css" rel="stylesheet" type="text/css">
 
-<title>Room Effects | Web Audio API</title>
+<title>Visualizer | Web Audio API</title>
 
 <link rel="stylesheet" href="style.css" type="text/css" media="screen">
 </head>
@@ -30,22 +30,22 @@
 
       
 <div class="post">
-  <h2>Room Effects</h2>
+  <h2>Visualizer</h2>
   <p>
-    </p><p>Using <code>ConvolverNode</code> and impulse response samples to illustrate various kinds of room effects.</p>
+    </p><p>Using the AnalyserNode and some Canvas 2D visualizations to show both time- and frequency- domain.</p>
 
   <p></p>
   <p>
-    </p><p><button onclick="sample.playPause();">Play/pause</button>
-<input type="radio" name="ir" value="0" class="effect" checked="">Telephone
-<input type="radio" name="ir" value="1" class="effect">Muffler
-<input type="radio" name="ir" value="2" class="effect">Spring feedback
-<input type="radio" name="ir" value="3" class="effect">Crazy echo</p>
+    </p><p><button style="display: block">Play/pause</button>
+<canvas></canvas></p>
 
-<script type="text/javascript" async="" src="ga.js"></script><script src="shared.js"></script>
-<script src="room-effects-sample.js"></script>
+<script type="text/javascript" async="" src="ga.js"></script><script src="shared(1).js"></script>
+<script src="visualizer-sample.js"></script>
 <script>
-var sample = new RoomEffectsSample(document.querySelectorAll('input.effect'));
+var sample = new VisualizerSample();
+document.querySelector('button').addEventListener('click', function() {
+  sample.togglePlayback()
+});
 </script>
 
   <p></p>

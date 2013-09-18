@@ -23,39 +23,6 @@
 
   <script type="text/javascript">
 
-    // // // create context
-    // // var context  = new webkitAudioContext();
-
-
-    // // var createChannel = function(source){
-    // //     var channel = {};
-    // //     // create source
-    // //     channel.source         = context.createMediaElementSource(source);
-    // //     channel.destination    = context.destination;
-    // //     channel.filterNode       = context.createfilterNode();
-    // //     channel.filterNode.gain = 0;
-    // //     // channel.analyser       = context.createAnalyser();
-    // //     // channel.analyser.fftSize = 2048;
-    // //     // connect
-    // //     channel.source.connect(channel.filterNode);
-    // //     channel.filterNode.connect(channel.destination);
-    // //     return channel;
-    // // }
-
-    // // var audioElement = new Audio();
-    // // audioElement.addEventListener("canplaythrough", function() {
-    // //   var channel = createChannel(audioElement);
-    //   $('.play').on('click', function(){
-    //     playSound()
-    //     $('body').addClass('playing');
-    //   });
-    //   $('.pause').on('click', function(){
-    //     stopSound()
-    //     $('body').removeClass('playing');
-    //   });
-    // // });
-    // // audioElement.src = 'papa_roach_last_resort.mp3';
-
     $(function(){
       window.context = new window.AudioContext();
       window.buffer;
@@ -106,7 +73,7 @@
         xhr.send();
       }
 
-      loadSoundFile('papa_roach_last_resort.mp3');
+      loadSoundFile('sound/papa_roach_last_resort.mp3');
       $('.radio1').on('change', function(e){
         changeFilterType($('.radio1:checked').val()*1);
       });
@@ -125,7 +92,7 @@ source.connect(filterNode);
 filterNode.connect(destination);
 </pre>
 
-  <div class="scheme" style="min-height:50px;background-image:url(source-biquard-destination.svg)"></div>
+  <div class="scheme" style="min-height:50px;background-image:url(svg/source-biquard-destination.svg)"></div>
   <div class="legend">
     <!-- <h3>Gain</h3> -->
     <ul>

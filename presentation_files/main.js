@@ -16,4 +16,19 @@ $(function(){
     window.stopButtonClick();
     $('body').removeClass('playing');
   });
+
+
+  //38 will go to the next slide and 40 to the previous.
+
+  $(window).on('keyup', function(e){
+    console.log(e);
+    if(e.keyCode == '37'){
+      window.parent.impress().prev();
+    } else if(e.keyCode == '39'){
+      window.parent.impress().next();
+    }
+  });
+
+
+
 });
