@@ -85,21 +85,11 @@
   <h3>2 tracks with gain nodes</h3>
 <pre data-language="javascript">
   gainNodes = [context.createGain(), context.createGain()];
-
   gainNodes[0].gain.value  = 1 - $('.range1').val();
   gainNodes[1].gain.value  = $('.range1').val();
-
-  sources[0].connect(gainNodes[0]);
-  sources[1].connect(gainNodes[1]);
-
-  gainNodes[0].connect(destination);
-  gainNodes[1].connect(destination);
-
-  sources[0].start(0);
-  sources[1].start(0);
 </pre>
 
-  <div class="scheme" style="height:200px;background-image:url(http://html5.by/blogdemo/webaudioapi/svg/source-crossfade-destination.svg)"></div>
+  <div class="scheme" style="height:300px;background-image:url(http://html5.by/blogdemo/webaudioapi/svg/source-crossfade-destination.svg)"></div>
   <div class="legend">
     <!-- <h3>Gain</h3> -->
     <ul>

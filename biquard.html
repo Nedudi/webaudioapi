@@ -83,16 +83,13 @@
   <h2>Biquad filter node</h2>
 <pre data-language="javascript">
 var filterNode = context.createBiquadFilter();
-filterNode.type = 1; // High-pass filter.
+filterNode.type = 1;               // High-pass filter.
 filterNode.frequency.value = 1000; // Cutoff to 1kHZ
-filterNode.frequency.Q = 1; // QUality factor
-filterNode.gain.value = 1000; // Not used in this filter type
-
-source.connect(filterNode);
-filterNode.connect(destination);
+filterNode.frequency.Q = 1;        // QUality factor
+filterNode.gain.value = 1000;      // Not used in this filter type
 </pre>
 
-  <div class="scheme" style="min-height:50px;background-image:url(svg/source-biquard-destination.svg)"></div>
+  <!-- <div class="scheme" style="min-height:50px;background-image:url(svg/source-biquard-destination.svg)"></div> -->
   <div class="legend">
     <!-- <h3>Gain</h3> -->
     <ul>

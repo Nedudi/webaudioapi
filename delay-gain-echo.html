@@ -62,19 +62,8 @@
   <h2>Echo effect with delay and gain</h2>
 <!--   <h3>with delay and gain node and oscilator as source</h3> -->
 <pre data-language="javascript">
-  var source = context.createOscillator(); // source
-
-  var gainNode = context.createGain(); // gain
-      gainNode.gain.value = 0.5;
-
-  var delayNode = context.createDelay(); // delay
-      delayNode.delayTime.value  = 0.75;
-
-  var destination = context.destination; // destination
-
   source.connect(gainNode);
   gainNode.connect(destination);
-
   gainNode.connect(delayNode);
   delayNode.connect(gainNode);
 

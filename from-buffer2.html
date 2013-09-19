@@ -34,10 +34,6 @@
         source = context.createBufferSource();
         source.buffer = buffer;
         destination = context.destination;
-
-        gainNode       = context.createGain();
-        gainNode.gain.value  = $('.range1').val();
-
         source.connect(destination);
         source.start(0);
       }
@@ -50,6 +46,7 @@
           // this.response is an ArrayBuffer.
           context.decodeAudioData(this.response, function(decodedArrayBuffer) {
             buffer = decodedArrayBuffer;
+            $('body').addClass('readytoplay');
           }, function(e) {
             console.log('Error decoding file', e);
           });
@@ -61,29 +58,8 @@
     });
 
   </script>
-<div class="scheme" style="background-image:url(http://html5.by/blogdemo/webaudioapi/svg/source-destination.svg)"></div>
+<div class="scheme" style="height:200px;background-image:url(http://html5.by/blogdemo/webaudioapi/svg/source-destination.svg)"></div>
 <pre data-language="javascript">
-  var context = new window.AudioContext();
-  var buffer, source, destination;
-
-  var loadSoundFile = function(url) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.responseType = 'arraybuffer';
-    xhr.onload = function(e) {
-      context.decodeAudioData(this.response, function(decodedArrayBuffer) {
-        buffer = decodedArrayBuffer; // this.response is an ArrayBuffer.
-      }, function(e) {
-        console.log('Error decoding file', e);
-      });
-    };
-    xhr.send();
-  }
-
-  var stop = function(){
-    source.stop(0);
-  }
-
   var play = function(){
     source = context.createBufferSource();
     destination = context.destination;
@@ -92,7 +68,9 @@
     source.start(0);
   }
 
-  loadSoundFile('papa_roach_last_resort.mp3');
+  var stop = function(){
+    source.stop(0);
+  }
 </pre>
 
   <button type="button" class="play  btn btn-primary">Play</button>
