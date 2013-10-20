@@ -131,3 +131,21 @@ input[type='range']::-webkit-slider-thumb {
   height: 16px;
   border-radius: 16px;
 }
+
+
+.btn-primary{
+  background: rgba(0, 112, 175, 1);
+  border-radius: 0;
+}
+
+.btn-primary:hover{
+  background: rgba(0, 100, 160, 1);
+}
+
+.btn-success{
+  background: #51a351;
+}
+
+.btn-success:hover{
+  background: #519051;
+}
